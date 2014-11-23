@@ -1,4 +1,4 @@
 PaGrav
 ======
 
-Gravity of particles
+Computing gravitational forces and their effect on simple particles.
