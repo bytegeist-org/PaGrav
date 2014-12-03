@@ -7,6 +7,7 @@ from Particle import *
 class ParticleSystem:
     """A System of partices"""
     particles = []
+    distance_matrix = []
 
     def __init__(self, first_particle):
         self.particles.append(first_particle)
@@ -21,19 +22,19 @@ class ParticleSystem:
                            self.particles[particle_nb_1].location)
 
     def calculate_distance_matrix(self):
-        """returns the distance between all system of the system as a
+        """calculates the distance between all particles of the system as a
         matrix"""
         # possible optimization: calculate only on half of the matrix and mirror
         # elements
         # number of particles
-        nb_of_system = len(self.particles)
-        # create empty matrix
-        distance_matrix = zeros((nb_of_system, nb_of_system))
+        nb_of_particles = len(self.particles)
+        # create empty / clear matrix
+        self.distance_matrix = zeros((nb_of_particles, nb_of_particles))
         # calculate elements of matrix
-        for x in range(nb_of_system):
-            for y in range(nb_of_system):
-                distance_matrix[x, y] = self.calculate_distance(x, y)
-        return distance_matrix
+        for x in range(nb_of_particles):
+            for y in range(nb_of_particles):
+                self.distance_matrix[x, y] = self.calculate_distance(x, y)
+        return self.distance_matrix
 
     def calculate_direction_vector(self, particle_nb_1, particle_nb_2):
         """calculate direction vector"""
@@ -45,3 +46,12 @@ class ParticleSystem:
         # unit vector
         e_xy = xy / distance_xy
         return e_xy
+
+    #def calculate_gravitational_force(self):
+        #"""calculate gravitational force on particles due to all other particles
+        #of the system"""
+        ## number of particles
+        #nb_of_particles = len(self.particles)
+        ## sum up all single forces
+        #for x in range(nb_of_particles):
+
