@@ -10,6 +10,7 @@ class Particle:
         self.location = location        # numpy array [sx,sy,sz]
         self.velocity = velocity        # numpy array [vx,vy,vz]
         self.force = array([0, 0, 0])   # numpy array [Fx,Fy,Fz]
+        self.diameter = 1
 
     def add_force(self, new_force):
         """add a force (numpy array [Fx, Fy, Fz])to particle"""

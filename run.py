@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 
 # create three particles
 m1 = Particle(1, array([0, 0, 0]), array([0, 0, 0]))
-m2 = Particle(10, array([10, 10, 0]), array([1, 1, 0]))
-m3 = Particle(150, array([10, 5, 0]), array([1, 5, 0]))
+m2 = Particle(1000000, array([1, 0, 0]), array([1, 1, 0]))
+m3 = Particle(150, array([0, 1, 0]), array([1, 5, 0]))
 m4 = Particle(100, array([0, 5, 0]), array([0, 0, 0]))
 
 # setup particle system
 sys = ParticleSystem(m1)
 sys.add_particle(m2)
 sys.add_particle(m3)
-sys.add_particle(m4)
+#sys.add_particle(m4)
 
 ## print masses of particles
 #print(sys.particles[0].mass)
@@ -49,10 +49,14 @@ sys.add_particle(m4)
 #print(m4.force)
 
 
-m1.force = array([0, 0, 1])
-m2.force = array([0, 3, 3])
-print(m1.location)
-for i in range(10):
-    print(m1.location)
-    print(m1.velocity)
-    m1.update_state(1)
+#m1.force = array([0, 0, 1])
+#m2.force = array([0, 3, 3])
+#print(m1.location)
+#for i in range(10):
+    #print(m1.location)
+    #print(m1.velocity)
+    #m1.update_state(1)
+
+print(len(sys.particles))
+test_force = sys.calculate_gravitational_force(0)
+print (test_force)
